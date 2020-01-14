@@ -95,6 +95,7 @@
 
 
 // *******  Constructor    *******
+
 // class Person{
 //     String name;
 //     int age;
@@ -111,3 +112,44 @@
 // }
 
 
+// ***** Named Argument *****
+// class Person{
+//     String name;
+//     int age; 
+//   Person({String myName,int age}){
+//     name = myName;
+//     this.age=age;
+//   }
+// }
+// void main() {  
+//   var p1=Person(myName:'Shaily',age:23);
+//   print(p1.name); //Shaily
+//   print(p1.age); //23
+// }
+
+// ***** default value *****
+// class Person{
+//     String name;
+//     int age; 
+//   Person({String myName,int age=50}){
+//     name = myName;
+//     this.age=age;
+//   }
+// }
+// void main() {  
+//   var p1=Person(myName:'Shaily');
+//   print(p1.name); //Shaily
+//   print(p1.age); //50
+// }
+
+
+// class Person{
+//     String name;
+//     int age; 
+//   Person({this.name,this.age=50});
+// }
+// void main() {  
+//   var p1=Person(name:'Shaily');
+//   print(p1.name); //Shaily
+//   print(p1.age); //50
+// }
