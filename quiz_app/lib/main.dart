@@ -6,20 +6,20 @@ class MyApp extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState(){
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> {
 
-  var questionIndex=0;
+  var _questionIndex=0;
 
-  void answerQuestion(){
+  void _answerQuestion(){
     setState((){
-    questionIndex=questionIndex+1;
+    _questionIndex=_questionIndex+1;
 
     });
-    print(questionIndex);
+    print(_questionIndex);
   }
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,8 @@ class MyAppState extends State<MyApp> {
     return MaterialApp( home:Scaffold(
       appBar:AppBar(title:Text('Welcome to Quiz'),),
       body: Column(children: /*<Widget>*/[
-        Text(questions[questionIndex],),
-        RaisedButton(child: Text('Answer 1'), onPressed: answerQuestion,),
+        Text(questions[_questionIndex],),
+        RaisedButton(child: Text('Answer 1'), onPressed: _answerQuestion,),
         RaisedButton(child: Text('Answer 2'), onPressed: () => print('Answer 2 chosen!'),),
         RaisedButton(child: Text('Answer 3'), onPressed: (){
            print('Answer 3 chosen');
