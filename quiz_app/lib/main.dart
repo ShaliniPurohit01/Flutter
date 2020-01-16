@@ -38,27 +38,32 @@ class _MyAppState extends State<MyApp>
       {
         'questionText':'Which\'s your food?',
         'answer':['Indian','Chinese','Continental','Italian'],
-      },
+      }
     ];
     return MaterialApp(
-       home:Scaffold(
-        appBar:AppBar(title:Text('Welcome to Quiz'),
-      ),
-      body: Column(
-        children:[
-          Question(
-            questions[_questionIndex],
-          ),
+      home:Scaffold(
+        appBar:AppBar(
+          title:Text('Welcome to Quiz'),
+        ),
+        body: Column(
+          children:[
+            Question(
+              questions[_questionIndex]['questionText'],
+            ),
           //callbacks
           // Answer(_answerQuestion),
           // Answer(_answerQuestion),
           // Answer(_answerQuestion),
-          (
-            questions[_questionIndex]['answer'] as List<String>
-          ).map((answers){
-              return Answer(_answerQuestion, answers);
-            }).toList()
-        ],
+          
+          //mapping list to widget
+            ...(
+              questions
+              [_questionIndex]['answer'] as List<String>
+            ).map((answers){
+                return Answer(_answerQuestion, answers);
+              }).toList()
+          ],
+        )
       ),
     );
   }
