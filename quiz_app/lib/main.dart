@@ -12,33 +12,39 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  //maps {key:value}
+  //this is compile time constant
+  // static const questions = [
+  final questions = const [
+    {
+      'questionText': 'What\'s your favorite color?',
+      'answer': ['Black', 'Red', 'Blue', 'Green'],
+    },
+    {
+      'questionText': 'What\'s your favorite animal?',
+      'answer': ['Horse', 'Dog', 'Cow', 'Cat'],
+    },
+    {
+      'questionText': 'Which\'s your food?',
+      'answer': ['Indian', 'Chinese', 'Continental', 'Italian'],
+    }
+  ];
   var _questionIndex = 0;
   void _answerQuestion() {
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
+    if (_questionIndex < questions.length) {
+      print('We have more questions !!');
+    }
+    else {
+      print('We dont have more questions !!')
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    //maps {key:value}
-    //this is compile time constant
-    const questions = [
-      {
-        'questionText': 'What\'s your favorite color?',
-        'answer': ['Black', 'Red', 'Blue', 'Green'],
-      },
-      {
-        'questionText': 'What\'s your favorite animal?',
-        'answer': ['Horse', 'Dog', 'Cow', 'Cat'],
-      },
-      {
-        'questionText': 'Which\'s your food?',
-        'answer': ['Indian', 'Chinese', 'Continental', 'Italian'],
-      }
-    ];
-
     // var dummy = ['hello'];
     // dummy.add('Max!!');
     // print(dummy);
@@ -55,7 +61,7 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: Text('Welcome to Quiz'),
           ),
-          body: Column(
+          body:_questionIndex < questions.length ? Column(
             children: [
               Question(
                 questions[_questionIndex]['questionText'],
@@ -71,7 +77,8 @@ class _MyAppState extends State<MyApp> {
                 return Answer(_answerQuestion, answers);
               }).toList()
             ],
-          )),
+          ):Center(child:Text('You did it !')),
+        ),
     );
   }
 }
