@@ -29,15 +29,15 @@ class _MyAppState extends State<MyApp>
     var questions=[
       {
         'questionText':'What\'s your favorite color?',
-        'answers':['Black','Red','Blue','Green'],
+        'answer':['Black','Red','Blue','Green'],
       },
       {
         'questionText':'What\'s your favorite animal?',
-        'answers':['Horse','Dog','Cow','Cat'],
+        'answer':['Horse','Dog','Cow','Cat'],
       },
       {
         'questionText':'Which\'s your food?',
-        'answers':['Indian','Chinese','Continental','Italian'],
+        'answer':['Indian','Chinese','Continental','Italian'],
       },
     ];
     return MaterialApp(
@@ -50,9 +50,14 @@ class _MyAppState extends State<MyApp>
             questions[_questionIndex],
           ),
           //callbacks
-          Answer(_answerQuestion),
-          Answer(_answerQuestion),
-          Answer(_answerQuestion),
+          // Answer(_answerQuestion),
+          // Answer(_answerQuestion),
+          // Answer(_answerQuestion),
+          (
+            questions[_questionIndex]['answer'] as List<String>
+          ).map((answers){
+              return Answer(_answerQuestion, answers);
+            }).toList()
         ],
       ),
     );
