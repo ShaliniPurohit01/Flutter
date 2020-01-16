@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './questions.dart';
-import './answers.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
   //maps {key:value}
   //this is compile time constant
   // static const questions = [
-  final questions = const [
+  final _questions = const [
     {
       'questionText': 'What\'s your favorite color?',
       'answer': ['Black', 'Red', 'Blue', 'Green'],
@@ -35,11 +35,10 @@ class _MyAppState extends State<MyApp> {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
-    if (_questionIndex < questions.length) {
+    if (_questionIndex < _questions.length) {
       print('We have more questions !!');
-    }
-    else {
-      print('We dont have more questions !!')
+    } else {
+      print('We dont have more questions !!');
     }
   }
 
@@ -58,27 +57,33 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Welcome to Quiz'),
-          ),
-          body:_questionIndex < questions.length ? Column(
-            children: [
-              Question(
-                questions[_questionIndex]['questionText'],
-              ),
-              //callbacks
-              // Answer(_answerQuestion),
-              // Answer(_answerQuestion),
-              // Answer(_answerQuestion),
-
-              //mapping list to widget
-              ...(questions[_questionIndex]['answer'] as List<String>)
-                  .map((answers) {
-                return Answer(_answerQuestion, answers);
-              }).toList()
-            ],
-          ):Center(child:Text('You did it !')),
+        appBar: AppBar(
+          title: Text('Welcome to Quiz'),
         ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions)
+            : Result(),
+        // Column(
+        //   children: [
+        //     Question(
+        //       questions[_questionIndex]['questionText'],
+        //     ),
+        //     //callbacks
+        //     // Answer(_answerQuestion),
+        //     // Answer(_answerQuestion),
+        //     // Answer(_answerQuestion),
+
+        //     //mapping list to widget
+        //     ...(questions[_questionIndex]['answer'] as List<String>)
+        //         .map((answers) {
+        //       return Answer(_answerQuestion, answers);
+        //     }).toList()
+        //   ],
+        // ):Center(child:Text('You did it !')),
+      ),
     );
   }
 }
