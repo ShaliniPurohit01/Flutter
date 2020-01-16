@@ -25,9 +25,9 @@ class _MyAppState extends State<MyApp> {
     {
       'questionText': 'What\'s your favorite animal?',
       'answer': [
-        {'text': 'Horse', 'score': 10},
-        {'text': 'Dog', 'score': 8},
-        {'text': 'Cow', 'score': 6},
+        {'text': 'Horse', 'score': 8},
+        {'text': 'Dog', 'score': 4},
+        {'text': 'snake', 'score': 10},
         {'text': 'Cat', 'score': 3}
       ],
     },
@@ -37,12 +37,20 @@ class _MyAppState extends State<MyApp> {
         {'text': 'Indian', 'score': 9},
         {'text': 'Chinese', 'score': 6},
         {'text': 'Continental', 'score': 7},
-        {'text': 'Italian', 'score': 10}
+        {'text': 'Italian', 'score': 2}
       ],
     }
   ];
   var _questionIndex = 0;
   var _totalScore = 0;
+
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
   void _answerQuestion(int score) {
     _totalScore += score;
     setState(() {
@@ -61,14 +69,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Welcome to Quiz'),
+          title: Text('!! Welcome to Personality calculator QUIZ !!'),
         ),
         body: _questionIndex < _questions.length
             ? Quiz(
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex,
                 questions: _questions)
-            : Result(),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
