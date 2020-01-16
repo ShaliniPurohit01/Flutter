@@ -12,25 +12,39 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  //maps {key:value}
-  //this is compile time constant
-  // static const questions = [
   final _questions = const [
     {
       'questionText': 'What\'s your favorite color?',
-      'answer': ['Black', 'Red', 'Blue', 'Green'],
+      'answer': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Blue', 'score': 7},
+        {'text': 'Green', 'score': 4}
+      ],
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answer': ['Horse', 'Dog', 'Cow', 'Cat'],
+      'answer': [
+        {'text': 'Horse', 'score': 10},
+        {'text': 'Dog', 'score': 8},
+        {'text': 'Cow', 'score': 6},
+        {'text': 'Cat', 'score': 3}
+      ],
     },
     {
       'questionText': 'Which\'s your food?',
-      'answer': ['Indian', 'Chinese', 'Continental', 'Italian'],
+      'answer': [
+        {'text': 'Indian', 'score': 9},
+        {'text': 'Chinese', 'score': 6},
+        {'text': 'Continental', 'score': 7},
+        {'text': 'Italian', 'score': 10}
+      ],
     }
   ];
   var _questionIndex = 0;
-  void _answerQuestion() {
+  var _totalScore = 0;
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
@@ -44,17 +58,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    // var dummy = ['hello'];
-    // dummy.add('Max!!');
-    // print(dummy);
-    // [hello, Max!!]
-
-    // var dummy =const ['hello'];
-    // dummy.add('Max!!');
-    // print(dummy); //error
-    //we add new value to unmodifiedable variable
-    // dummy=[]; // this is allowed because dummy is variable but list is constant
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -66,23 +69,6 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questionIndex,
                 questions: _questions)
             : Result(),
-        // Column(
-        //   children: [
-        //     Question(
-        //       questions[_questionIndex]['questionText'],
-        //     ),
-        //     //callbacks
-        //     // Answer(_answerQuestion),
-        //     // Answer(_answerQuestion),
-        //     // Answer(_answerQuestion),
-
-        //     //mapping list to widget
-        //     ...(questions[_questionIndex]['answer'] as List<String>)
-        //         .map((answers) {
-        //       return Answer(_answerQuestion, answers);
-        //     }).toList()
-        //   ],
-        // ):Center(child:Text('You did it !')),
       ),
     );
   }
