@@ -49,7 +49,7 @@ class TransactionList extends StatelessWidget {
                     Text(
                       DateFormat.yMd()
                           .add_jm()
-                          .format(transactions[indexcd].date),
+                          .format(transactions[index].date),
                       style: TextStyle(color: Colors.blueGrey),
                     ),
                   ],
