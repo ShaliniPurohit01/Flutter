@@ -1,52 +1,43 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';
+import './product.dart';
 
 class Products with ChangeNotifier {
   List<Product> _items = [
     Product(
       id: 'p1',
-      title: 'title1',
-      description: 'description1',
-      price: 200,
+      title: 'Red Shirt',
+      description: 'A red shirt - it is pretty red!',
+      price: 29.99,
       imageUrl: 'http://pngimg.com/uploads/polo_shirt/polo_shirt_PNG8171.png',
     ),
     Product(
       id: 'p2',
-      title: 'title2',
-      description: 'description2',
-      price: 200,
+      title: 'Trousers',
+      description: 'A nice pair of trousers.',
+      price: 59.99,
       imageUrl: 'http://pngimg.com/uploads/polo_shirt/polo_shirt_PNG8171.png',
     ),
     Product(
       id: 'p3',
-      title: 'title3',
-      description: 'description3',
-      price: 200,
+      title: 'Yellow Scarf',
+      description: 'Warm and cozy - exactly what you need for the winter.',
+      price: 19.99,
       imageUrl: 'http://pngimg.com/uploads/polo_shirt/polo_shirt_PNG8171.png',
     ),
     Product(
       id: 'p4',
-      title: 'title4',
-      description: 'description4',
-      price: 200,
-      imageUrl: 'http://pngimg.com/uploads/polo_shirt/polo_shirt_PNG8171.png',
-    ),
-    Product(
-      id: 'p5',
-      title: 'title5',
-      description: 'description5',
-      price: 200,
-      imageUrl: 'http://pngimg.com/uploads/polo_shirt/polo_shirt_PNG8171.png',
-    ),
-    Product(
-      id: 'p6',
-      title: 'title6',
-      description: 'description6',
-      price: 200,
+      title: 'A Pan',
+      description: 'Prepare any meal you want.',
+      price: 49.99,
       imageUrl: 'http://pngimg.com/uploads/polo_shirt/polo_shirt_PNG8171.png',
     ),
   ];
+
+  var _showFavoritesOnly = false;
   List<Product> get items {
+    if (_showFavoritesOnly) {
+      return _items.where((prodItem) => prodItem.isFavorite).toList();
+    }
     return [..._items];
   }
 
@@ -54,7 +45,18 @@ class Products with ChangeNotifier {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
+  void showFavoritesOnly() {
+    _showFavoritesOnly = true;
+    notifyListeners();
+  }
+
+  void showAll() {
+    _showFavoritesOnly = true;
+    notifyListeners();
+  }
+
   void addProduct() {
+    // _items.add(value);
     notifyListeners();
   }
 }
