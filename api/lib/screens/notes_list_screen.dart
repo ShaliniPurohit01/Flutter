@@ -1,6 +1,7 @@
 import 'package:api/screens/notes_modification.dart';
 import 'package:flutter/material.dart';
 import '../models/notes_data.dart';
+import './note_delete.dart';
 
 class NotesList extends StatelessWidget {
   final notes = [
@@ -41,19 +42,37 @@ class NotesList extends StatelessWidget {
       body: ListView.separated(
         separatorBuilder: (_, __) => Divider(height: 1, color: Colors.green),
         itemBuilder: (_, index) {
-          return ListTile(
-            title: Text(
-              notes[index].notesTitle,
-              style: TextStyle(color: Theme.of(context).primaryColor),
-            ),
-            subtitle: Text(
-                'Last edited on ${formatDateTime(notes[index].lastEditedValue)}'),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => NotesModify(
-                        noteId: notes[index].notesId,
-                      )));
+          return Dismissible(
+            key: ValueKey(notes[index].notesId),
+            direction: DismissDirection.startToEnd,
+            onDismissed: (direction) {},
+            confirmDismiss: (direction) {
+              final result = showDialog(
+                context: context,
+                builder: (_) => NoteDelete(),
+              );
+              return result;
             },
+            background: Container(
+                color: Colors.red,
+                padding: EdgeInsets.only(left: 16),
+                child: Align(
+                    child: Icon(Icons.delete, color: Colors.white),
+                    alignment: Alignment.centerLeft)),
+            child: ListTile(
+              title: Text(
+                notes[index].notesTitle,
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              ),
+              subtitle: Text(
+                  'Last edited on ${formatDateTime(notes[index].lastEditedValue)}'),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => NotesModify(
+                          noteId: notes[index].notesId,
+                        )));
+              },
+            ),
           );
         },
         itemCount: notes.length,
