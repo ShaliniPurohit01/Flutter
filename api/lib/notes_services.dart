@@ -1,9 +1,8 @@
-// import 'package:api/screens/notes_list_screen.dart';
 import 'dart:convert';
-
 import 'package:api/models/api_response.dart';
 import './models/notes_data.dart';
 import 'package:http/http.dart' as http;
+import './models/note.dart';
 
 class NotesService {
   static const API = 'http://api.notes.programmingaddict.com';
@@ -15,15 +14,7 @@ class NotesService {
         final notes = <NotesData>[];
 
         for (var item in jsonData) {
-          final note = NotesData(
-            notesId: item['noteID'],
-            notesTitle: item['noteTitle'],
-            createValue: DateTime.parse(item['createDateTime']),
-            lastEditedValue: item['lastEditedDateTime'] != null
-                ? DateTime.parse(item['lastEditeddDateTime'])
-                : null,
-          );
-          notes.add(note);
+          notes.add(NotesData.fromJson(item));
         }
         return APIResponse<List<NotesData>>(data: notes);
       }
@@ -31,25 +22,18 @@ class NotesService {
           error: true, errorMessage: 'An error occured');
     }).catchError((_) => APIResponse<List<NotesData>>(
         error: true, errorMessage: 'An error occured'));
-    // return [
-    //   new NotesData(
-    //     notesId: '1',
-    //     notesTitle: 'title1',
-    //     createValue: DateTime.now(),
-    //     lastEditedValue: DateTime.now(),
-    //   ),
-    //   new NotesData(
-    //     notesId: '2',
-    //     notesTitle: 'title2',
-    //     createValue: DateTime.now(),
-    //     lastEditedValue: DateTime.now(),
-    //   ),
-    //   new NotesData(
-    //     notesId: '3',
-    //     notesTitle: 'title3',
-    //     createValue: DateTime.now(),
-    //     lastEditedValue: DateTime.now(),
-    //   )
-    // ];
+  }
+
+  Future<APIResponse<Note>> getNote(String noteID) {
+    return http.get(API + '/notes/' + noteID, headers: headers).then((data) {
+      if (data.statusCode == 200) {
+        final jsonData = jsonDecode(data.body);
+
+        return APIResponse<Note>(data: Note.fromJson(jsonData));
+      }
+      return APIResponse<List<NotesData>>(
+          error: true, errorMessage: 'An error occured');
+    }).catchError((_) => APIResponse<List<NotesData>>(
+        error: true, errorMessage: 'An error occured'));
   }
 }

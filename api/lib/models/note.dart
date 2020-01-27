@@ -1,18 +1,22 @@
-import 'package:flutter/foundation.dart';
-
-class NotesData {
+class Note {
   String notesId;
   String notesTitle;
+  String notesContent;
   DateTime createValue;
   DateTime lastEditedValue;
 
-  NotesData(
-      {this.notesId, this.notesTitle, this.createValue, this.lastEditedValue});
+  Note(
+      {this.notesId,
+      this.notesTitle,
+      this.notesContent,
+      this.createValue,
+      this.lastEditedValue});
 
-  factory NotesData.fromJson(Map<String, dynamic> item) {
-    return NotesData(
+  factory Note.fromJson(Map<String, dynamic> item) {
+    return Note(
       notesId: item['noteID'],
       notesTitle: item['noteTitle'],
+      notesContent: item['noteContent'],
       createValue: DateTime.parse(item['createDateTime']),
       lastEditedValue: item['lastEditedDateTime'] != null
           ? DateTime.parse(item['lastEditeddDateTime'])
