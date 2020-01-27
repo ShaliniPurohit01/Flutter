@@ -50,7 +50,10 @@ class _NotesListState extends State<NotesList> {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => NotesModify()));
+                .push(MaterialPageRoute(builder: (_) => NotesModify()))
+                .then((_) {
+              _fetchNotes();
+            });
           },
           child: Icon(Icons.add)),
       body: Builder(

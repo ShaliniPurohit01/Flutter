@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:get_it/get_it.dart';
 import 'package:api/models/note.dart';
 import 'package:api/notes_services.dart';
+import 'package:api/models/note_insert.dart';
 
 class NotesModify extends StatefulWidget {
   final String noteId;
@@ -29,22 +30,24 @@ class _NotesModifyState extends State<NotesModify> {
   void initState() {
     super.initState();
 
-    setState(() {
-      _isLoading = true;
-    });
-
-    notesService.getNote(widget.noteId).then((response) {
+    if (isEditing) {
       setState(() {
-        _isLoading = false;
+        _isLoading = true;
       });
 
-      if (response.error) {
-        errorMessage = response.errorMessage ?? 'an error occured';
-      }
-      note = response.data;
-      _titleController.text = note.notesTitle;
-      _contentController.text = note.notesContent;
-    });
+      notesService.getNote(widget.noteId).then((response) {
+        setState(() {
+          _isLoading = false;
+        });
+
+        if (response.error) {
+          errorMessage = response.errorMessage ?? 'an error occured';
+        }
+        note = response.data;
+        _titleController.text = note.notesTitle;
+        _contentController.text = note.notesContent;
+      });
+    }
   }
 
   @override
@@ -76,8 +79,44 @@ class _NotesModifyState extends State<NotesModify> {
                       child:
                           Text('Submit', style: TextStyle(color: Colors.white)),
                       color: Theme.of(context).primaryColor,
-                      onPressed: () {
-                        Navigator.of(context).pop();
+                      onPressed: () async {
+                        if (isEditing) {
+                          //update note
+                        } else {
+                          setState(() {
+                            _isLoading = true;
+                          });
+
+                          final note = NoteInsert(
+                              noteTitle: _titleController.text,
+                              noteContent: _contentController.text);
+
+                          final result = await notesService.createNote(note);
+
+                          final title = 'Done';
+                          final text = result.error
+                              ? (result.errorMessage ?? 'An error occured')
+                              : 'Your code was created';
+
+                          showDialog(
+                              context: context,
+                              builder: (_) => AlertDialog(
+                                    title: Text(title),
+                                    content: Text(text),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text('ok'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      )
+                                    ],
+                                  )).then((data) {
+                            if (result.data) {
+                              Navigator.of(context).pop();
+                            }
+                          });
+                        }
                       },
                     ),
                   ),
