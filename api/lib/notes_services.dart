@@ -9,7 +9,7 @@ class NotesService {
   static const API = 'http://api.notes.programmingaddict.com';
   static const headers = {
     'apiKey': '08d7a2e5-b03a-ed68-3329-b6a59e4a3495',
-    'Content-Type': 'appliation/json'
+    'Content-Type': 'application/json'
   };
   Future<APIResponse<List<NotesData>>> getNotesList() {
     return http.get(API + '/notes', headers: headers).then((data) {
@@ -49,7 +49,9 @@ class NotesService {
         return APIResponse<bool>(data: true);
       }
       return APIResponse<bool>(error: true, errorMessage: 'An error occured');
-    }).catchError((_) =>
-            APIResponse<bool>(error: true, errorMessage: 'An error occured'));
+    }).catchError((error) {
+      print(error);
+    });
+    // APIResponse<bool>(error: true, errorMessage: 'An error occured'));
   }
 }
