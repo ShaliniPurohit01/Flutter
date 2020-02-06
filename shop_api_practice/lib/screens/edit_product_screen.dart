@@ -93,65 +93,40 @@ class _EditProductScreenState extends State<EditProductScreen> {
       _isLoading = true;
     });
     if (_editedProduct.id != null) {
-      Provider.of<Products>(context, listen: false)
+      await Provider.of<Products>(context, listen: false)
           .updateProduct(_editedProduct.id, _editedProduct);
-      setState(() {
-        _isLoading = false;
-      });
-      Navigator.of(context).pop();
     } else {
       try {
         await Provider.of<Products>(context, listen: false)
             .addProduct(_editedProduct);
       } catch (error) {
-        showDialog(
+        await showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
-            title: Text('An error occured!'),
-            content: Text('Something went wrong!'),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('Okay'),
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                },
-              )
-            ],
-          ),
+                title: Text('An error occurred!'),
+                content: Text('Something went wrong.'),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Okay'),
+                    onPressed: () {
+                      Navigator.of(ctx).pop();
+                    },
+                  )
+                ],
+              ),
         );
-      } finally {
-        setState(() {
-          _isLoading = false;
-        });
-        Navigator.of(context).pop();
       }
+      // finally {
+      //   setState(() {
+      //     _isLoading = false;
+      //   });
+      //   Navigator.of(context).pop();
+      // }
     }
-
-    //   await Provider.of<Products>(context, listen: false)
-    //       .addProduct(_editedProduct)
-    //       .catchError((err) {
-    //     return showDialog(
-    //       context: context,
-    //       builder: (ctx) => AlertDialog(
-    //         title: Text('An error occured!'),
-    //         content: Text('Something went wrong!'),
-    //         actions: <Widget>[
-    //           FlatButton(
-    //             child: Text('Okay'),
-    //             onPressed: () {
-    //               Navigator.of(ctx).pop();
-    //             },
-    //           )
-    //         ],
-    //       ),
-    //     );
-    //   }).then((_) {
-    //     setState(() {
-    //       _isLoading = false;
-    //     });
-    //     Navigator.of(context).pop();
-    //   });
-    // }
+    setState(() {
+      _isLoading = false;
+    });
+    Navigator.of(context).pop();
     // Navigator.of(context).pop();
   }
 
