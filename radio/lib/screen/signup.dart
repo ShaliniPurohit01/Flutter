@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './radio_list_screen.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -143,7 +144,12 @@ class _SignupPageState extends State<SignupPage> {
       padding: EdgeInsets.symmetric(horizontal: 30.0),
       margin: EdgeInsets.only(top: 15.0),
       child: RaisedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => RadioList()),
+          );
+        },
         elevation: 0.0,
         color: Colors.blueAccent,
         child: Text("SignUp", style: TextStyle(color: Colors.white70)),
