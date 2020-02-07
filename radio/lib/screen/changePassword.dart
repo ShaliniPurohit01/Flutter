@@ -12,10 +12,9 @@ class _ChangePasswordState extends State<ChangePassword> {
       body: Container(
         color: Colors.black87,
         child: ListView(
-          children: <Widget>[
-           Text('Password Change page')
-          ],
+          children: <Widget>[Text('Password Change page')],
         ),
       ),
     );
   }
+}

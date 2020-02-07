@@ -154,7 +154,15 @@ class _LoginPageState extends State<LoginPage> {
       padding: EdgeInsets.symmetric(horizontal: 110.0),
       child: Row(
         children: <Widget>[
-          Container(
+          new GestureDetector(
+            onTap: () {
+              // Navigator.pushNamed(context, './signup.dart');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChangePassword()),
+              );
+            },
+            // Container(
             child: Text(
               'Forgot Your Password ?',
               style: TextStyle(
@@ -188,7 +196,11 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               new GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, './signup.dart');
+                  // Navigator.pushNamed(context, './signup.dart');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignupPage()),
+                  );
                 },
                 child: Text("Sign Up",
                     style: TextStyle(
@@ -196,12 +208,6 @@ class _LoginPageState extends State<LoginPage> {
                       fontSize: 15.0,
                     )),
               ),
-
-              // Text("Sign Up",
-              //     style: TextStyle(
-              //       color: Colors.blueAccent,
-              //       fontSize: 15.0,
-              //     ))
             ],
           ),
         ],
