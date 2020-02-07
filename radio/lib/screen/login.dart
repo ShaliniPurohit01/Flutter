@@ -16,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
             headerSection(),
             textSection(),
             buttonSection(),
+            forgetPassword(),
             bottomSection(),
           ],
         ),
@@ -95,36 +96,59 @@ class _LoginPageState extends State<LoginPage> {
   Container buttonSection() {
     return Container(
       margin: EdgeInsets.only(top: 40.0),
-      padding: EdgeInsets.symmetric(horizontal: 60.0),
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: Row(
         children: <Widget>[
-          new RaisedButton(
-            onPressed: () {},
-            elevation: 0.0,
-            color: Colors.blueAccent,
-            child: Text("Login", style: TextStyle(color: Colors.white)),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
+          new SizedBox(
+            width: 150,
+            height: 40,
+            child: new RaisedButton(
+              onPressed: () {},
+              elevation: 0.0,
+              color: Colors.blueAccent,
+              child: Text("Login", style: TextStyle(color: Colors.white)),
+              // color: pressed ? Colors.white : Colors.blueAccent,
+              // child: Text("Login",
+              //     style: pressed
+              //         ? TextStyle(color: Colors.blueAccent)
+              //         : TextStyle(color: Colors.white)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
+            ),
           ),
-          new Container(height: 8.0, width: 70.0),
-          RaisedButton(
-            onPressed: () {},
-            elevation: 0.0,
-            color: Colors.blueAccent,
-            child: Text("Guest", style: TextStyle(color: Colors.white)),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
+          new Container(height: 8.0, width: 50.0),
+          new SizedBox(
+            width: 150,
+            height: 40,
+            child: new RaisedButton(
+              onPressed: () {},
+              elevation: 0.0,
+              color: Colors.blueAccent,
+              child: Text("Guest", style: TextStyle(color: Colors.white)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
+            ),
           ),
-          // Padding(
-          //   padding: EdgeInsets.fromLTRB(50, 0, 55, 0),
-          //   child: Text(
-          //     'Forgot Your Password ?',
-          //     style: TextStyle(
-          //       fontSize: 15,
-          //       color: Colors.white38,
-          //     ),
-          //   ),
-          // ),
+        ],
+      ),
+    );
+  }
+
+  Container forgetPassword() {
+    return Container(
+      margin: EdgeInsets.only(top: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 110.0),
+      child: Row(
+        children: <Widget>[
+          Container(
+            child: Text(
+              'Forgot Your Password ?',
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.white,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -145,6 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                   ))
             ],
           ),
+          new Container(height: 8.0, width: 20.0),
           Column(
             children: <Widget>[
               Text("Sign Up",
