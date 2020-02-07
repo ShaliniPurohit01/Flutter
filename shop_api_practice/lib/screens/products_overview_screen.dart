@@ -43,8 +43,15 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           _isLoading = false;
         });
       });
-    }
+
+
+
+
+
+
     _isInit = false;
+    
+    
     super.didChangeDependencies();
   }
 
