@@ -9,17 +9,17 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black87,
-        title: Text(
-          "SignUp",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.black87,
+      //   title: Text(
+      //     "SignUp",
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //       fontSize: 20,
+      //       fontWeight: FontWeight.bold,
+      //     ),
+      //   ),
+      // ),
       body: Container(
         color: Colors.black87,
         child: ListView(
@@ -35,26 +35,25 @@ class _SignupPageState extends State<SignupPage> {
 
   Container headerSection() {
     return Container(
-        // margin: EdgeInsets.only(top: 50.0),
-        // padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-        // child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: <Widget>[
-        //       Text(
-        //         'Sign Up',
-        //         style: TextStyle(
-        //           color: Colors.white,
-        //           fontSize: 20,
-        //           fontWeight: FontWeight.bold,
-        //         ),
-        //       ),
-        //     ])
-        );
+        margin: EdgeInsets.only(top: 10.0),
+        padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                'Sign Up',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ]));
   }
 
   Container textSection() {
     return Container(
-      margin: EdgeInsets.only(top: 40.0),
+      margin: EdgeInsets.only(top: 10.0),
       padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
       child: Column(
         children: <Widget>[
@@ -72,7 +71,7 @@ class _SignupPageState extends State<SignupPage> {
                   borderSide: new BorderSide(color: Colors.white70)),
             ),
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: 10.0),
           TextFormField(
             cursorColor: Colors.white,
             style: TextStyle(
@@ -87,7 +86,7 @@ class _SignupPageState extends State<SignupPage> {
                   borderSide: new BorderSide(color: Colors.white70)),
             ),
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: 10.0),
           TextFormField(
             cursorColor: Colors.white,
             style: TextStyle(
@@ -102,7 +101,7 @@ class _SignupPageState extends State<SignupPage> {
                   borderSide: new BorderSide(color: Colors.white70)),
             ),
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: 10.0),
           TextFormField(
             cursorColor: Colors.white,
             style: TextStyle(
@@ -117,7 +116,7 @@ class _SignupPageState extends State<SignupPage> {
                   borderSide: new BorderSide(color: Colors.white70)),
             ),
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: 10.0),
           TextFormField(
             cursorColor: Colors.white,
             style: TextStyle(
@@ -139,15 +138,15 @@ class _SignupPageState extends State<SignupPage> {
 
   Container buttonSection() {
     return Container(
-      // width: MediaQuery.of(context).size.width,
+      width: 100,
       height: 40.0,
-      padding: EdgeInsets.symmetric(horizontal: 15.0),
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
       margin: EdgeInsets.only(top: 15.0),
       child: RaisedButton(
         onPressed: () {},
         elevation: 0.0,
         color: Colors.blueAccent,
-        child: Text("Sign In", style: TextStyle(color: Colors.white70)),
+        child: Text("SignUp", style: TextStyle(color: Colors.white70)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
       ),
     );
