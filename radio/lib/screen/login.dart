@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import './signup.dart';
+import './guestloginscreen.dart';
+import './radio_list_screen.dart';
+import './changePassword.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -103,7 +107,12 @@ class _LoginPageState extends State<LoginPage> {
             width: 150,
             height: 40,
             child: new RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RadioList()),
+                );
+              },
               elevation: 0.0,
               color: Colors.blueAccent,
               child: Text("Login", style: TextStyle(color: Colors.white)),
@@ -121,7 +130,12 @@ class _LoginPageState extends State<LoginPage> {
             width: 150,
             height: 40,
             child: new RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GuestLoginScreen()),
+                );
+              },
               elevation: 0.0,
               color: Colors.blueAccent,
               child: Text("Guest", style: TextStyle(color: Colors.white)),
@@ -172,11 +186,22 @@ class _LoginPageState extends State<LoginPage> {
           new Container(height: 8.0, width: 20.0),
           Column(
             children: <Widget>[
-              Text("Sign Up",
-                  style: TextStyle(
-                    color: Colors.blueAccent,
-                    fontSize: 15.0,
-                  ))
+              new GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, './signup.dart');
+                },
+                child: Text("Sign Up",
+                    style: TextStyle(
+                      color: Colors.blueAccent,
+                      fontSize: 15.0,
+                    )),
+              ),
+
+              // Text("Sign Up",
+              //     style: TextStyle(
+              //       color: Colors.blueAccent,
+              //       fontSize: 15.0,
+              //     ))
             ],
           ),
         ],
