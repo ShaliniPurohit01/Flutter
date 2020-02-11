@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './view_radio.dart';
 import '../model/radio_data.dart';
+import '../widget/app_drawer.dart';
 
 // class RadioList extends StatefulWidget {
 //   @override
@@ -47,6 +48,7 @@ class RadioList extends StatelessWidget {
                 .push(MaterialPageRoute(builder: (_) => ViewRadio()));
           },
           child: Icon(Icons.add)),
+      drawer: AppDrawer(),
       body: ListView.separated(
         separatorBuilder: (_, __) => Divider(height: 1, color: Colors.green),
         itemBuilder: (_, index) {

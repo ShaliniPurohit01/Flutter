@@ -44,11 +44,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         });
       });
 
-
-
-
-
-
     _isInit = false;
     
     
