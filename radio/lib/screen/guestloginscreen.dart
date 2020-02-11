@@ -1,65 +1,197 @@
 import 'package:flutter/material.dart';
-import './view_radio.dart';
-import '../model/radio_data.dart';
 import '../widget/app_drawer_guest.dart';
 
 class GuestLoginScreen extends StatelessWidget {
-  final radio = [
-    new RadioData(
-      radioId: '1',
-      radioTitle: 'title1',
-    ),
-    new RadioData(
-      radioId: '2',
-      radioTitle: 'title2',
-    ),
-    new RadioData(
-      radioId: '3',
-      radioTitle: 'title3',
-    ),
-    new RadioData(
-      radioId: '4',
-      radioTitle: 'title4',
-    ),
-    new RadioData(
-      radioId: '5',
-      radioTitle: 'title5',
-    ),
-    new RadioData(
-      radioId: '6',
-      radioTitle: 'title6',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Radio App')),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => ViewRadio()));
-          },
-          child: Icon(Icons.add)),
-      drawer: AppDrawerGuest(),
-      body: ListView.separated(
-        separatorBuilder: (_, __) => Divider(height: 1, color: Colors.green),
-        itemBuilder: (_, index) {
-          return ListTile(
-            title: Text(
-              radio[index].radioTitle,
-              style: TextStyle(color: Theme.of(context).primaryColor),
-            ),
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => ViewRadio(
-                        radioId: radio[index].radioId,
-                      )));
-            },
-          );
-        },
-        itemCount: radio.length,
+      appBar: AppBar(
+        title: Text(
+          'Home',
+        ),
+        backgroundColor: Colors.black,
       ),
+      drawer: AppDrawerGuest(),
+      body: Container(
+          color: Colors.black87,
+          child: ListView(
+            children: <Widget>[
+              ListTile(
+                title: Text(
+                  'News',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 90,
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Container(
+                      width: 165.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              new BorderRadius.all(Radius.circular(5.0))),
+                    ),
+                    Container(width: 20.0),
+                    Container(
+                      width: 165.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              new BorderRadius.all(Radius.circular(5.0))),
+                    ),
+                    Container(width: 20.0),
+                    Container(
+                      width: 165.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              new BorderRadius.all(Radius.circular(5.0))),
+                    ),
+                    Container(width: 20.0),
+                    Container(
+                      width: 165.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              new BorderRadius.all(Radius.circular(5.0))),
+                    ),
+                    Container(width: 20.0),
+                  ],
+                ),
+              ),
+              //
+              //
+              //
+              ListTile(
+                title: Text(
+                  'Hindi VOD\'s',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 90,
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Container(
+                      width: 165.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              new BorderRadius.all(Radius.circular(5.0))),
+                    ),
+                    Container(width: 20.0),
+                  ],
+                ),
+              ),
+              //
+              //
+              //
+              ListTile(
+                title: Text(
+                  'Radio',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 90,
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Container(
+                      width: 165.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              new BorderRadius.all(Radius.circular(5.0))),
+                    ),
+                    Container(width: 20.0),
+                  ],
+                ),
+              ),
+              //
+              //
+              //
+              ListTile(
+                title: Text(
+                  'Gujrati VOD\'s',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 90,
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Container(
+                      width: 165.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              new BorderRadius.all(Radius.circular(5.0))),
+                    ),
+                    Container(width: 20.0),
+                  ],
+                ),
+              ),
+              //
+              //
+              //
+              ListTile(
+                title: Text(
+                  'Punjabi VOD\'s',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 90,
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Container(
+                      width: 165.0,
+                      height: 50.0,
+                      decoration: new BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              new BorderRadius.all(Radius.circular(5.0))),
+                    ),
+                    Container(width: 20.0),
+                  ],
+                ),
+              ),
+            ],
+          )),
     );
   }
 }
