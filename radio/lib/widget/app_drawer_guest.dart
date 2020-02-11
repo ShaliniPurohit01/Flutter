@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screen/login.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawerGuest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +18,7 @@ class AppDrawer extends StatelessWidget {
                     size: 28.0,
                   ),
                   title: Text(
-                    'User',
+                    'Guest',
                     style: TextStyle(
                       fontSize: 25,
                     ),
@@ -33,9 +33,9 @@ class AppDrawer extends StatelessWidget {
                   onTap: () {},
                 ),
                 ListTile(
-                  leading: Icon(Icons.chevron_left,
+                  leading: Icon(Icons.chevron_right,
                       color: Colors.lightBlueAccent, size: 28.0),
-                  title: Text('Logout', style: TextStyle()),
+                  title: Text('Login', style: TextStyle()),
                   onTap: () {
                     Navigator.push(
                       context,
